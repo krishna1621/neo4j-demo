@@ -1,4 +1,4 @@
-FROM openjdk
-COPY target/*.jar /
+FROM openjdk:8
+COPY target/devops-integration.jar devops-integration.jar
 EXPOSE 9090
-ENTRYPOINT ["java","-jar","/my-app-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/devops-integration.jar"]
