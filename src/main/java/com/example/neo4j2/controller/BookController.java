@@ -15,7 +15,7 @@ public class BookController {
     @Autowired
     BookRepository bookRepository;
 
-    @PostMapping
+    @PostMapping("/addBook")
     public Book addBook(@RequestBody Book book){
         Book books = bookRepository.save(book);
         return books;
