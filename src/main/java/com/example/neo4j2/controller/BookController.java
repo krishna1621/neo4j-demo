@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Allbook")
+
 public class BookController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class BookController {
         return books;
     }
 
-    @GetMapping
+    @GetMapping("/getBooks")
     public List<Book> allBooks (){
        List<Book>  book = bookRepository.findAll();
         return book;
