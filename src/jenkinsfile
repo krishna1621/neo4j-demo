@@ -1,0 +1,36 @@
+pipeline{
+    agent any
+        tools{
+            maven 'Maven'
+        }
+        stages{
+            stage('Build Maven'){
+                steps{
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/krishna1621/neo4j-demo.git']])
+                    bat 'mvn clean install'
+                }
+            }
+            stage('Build docker image'){
+            steps{
+                script{
+                    bat 'docker build -t jenkins/devops-integration .'
+                }
+            }
+        }
+        stage('Neo4j'){
+            steps{
+                script{
+                    bat 'docker run --publish=7474:7474 --publish=7687:7687 neo4j:4.3.6'
+                }
+            }
+        }
+        stage('docker run container'){
+            steps{
+                script{
+                      bat 'docker run -p 9090:8080 jenkins/devops-integration'
+                }
+            }
+        }
+
+        }
+}
