@@ -28,7 +28,7 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Book getBooks( @PathVariable int id){
-        Book book1 = bookRepository.findById(id);
+        Book book1 = bookRepository.findBybookId(id);
         return book1;
 
     }

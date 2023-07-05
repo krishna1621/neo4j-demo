@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookRepository extends Neo4jRepository<Book,Integer> {
 
-    public  Book findById(int id);
+
+
+    Book findBybookId(int id);
 }
 
