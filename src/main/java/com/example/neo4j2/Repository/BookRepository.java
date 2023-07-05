@@ -10,5 +10,7 @@ public interface BookRepository extends Neo4jRepository<Book,Integer> {
 
 
     Book findBybookId(int id);
+
+    Book findBybook(int id);
 }
 
